@@ -81,5 +81,27 @@
 <p id="final">Proyecto Virtual</p>
 <br>
 
+    <script>
+        // Función para agrandar la imagen al hacer clic
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                // Crear un contenedor para mostrar la imagen en pantalla completa
+                const fullscreenDiv = document.createElement('div');
+                fullscreenDiv.classList.add('fullscreen');
+
+                // Clonar la imagen para mostrarla en pantalla completa
+                const imgClone = img.cloneNode();
+                fullscreenDiv.appendChild(imgClone);
+
+                // Añadir el contenedor al body
+                document.body.appendChild(fullscreenDiv);
+
+                // Cerrar la imagen ampliada al hacer clic en cualquier lugar
+                fullscreenDiv.addEventListener('click', () => {
+                    fullscreenDiv.remove();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
