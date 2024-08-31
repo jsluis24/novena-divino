@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilos para la vista ampliada */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: zoom-out;
+        }
+
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center; padding: 20px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">GALERIA DE FOTOS DREMO</h1>
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="fotos/dia1.jpeg" alt="Imagen 1">
+        </div>
+        <div class="gallery-item">
+            <img src="fotos/dia2.2.jpg" alt="Imagen 2">
+        </div>
+        <div class="gallery-item">
+            <img src="fotos/dia2.jpg" alt="Imagen 3">
+        </div>
+        <div class="gallery-item">
+            <img src="fotos/dia3.2.jpg" alt="Imagen 4">
+        </div>
+        <div class="gallery-item">
+            <img src="fotos/dia3.jpg" alt="Imagen 5">
+        </div>
+        <div class="gallery-item">
+            <img src="fotos/dia2.jpg" alt="Imagen 6">
+        </div>
+    </div>
+
+    <br>
+
+    <p><a href="index.html">Inicio</a></p>
+
+    <script>
+        // Función para agrandar la imagen al hacer clic
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                // Crear un contenedor para mostrar la imagen en pantalla completa
+                const fullscreenDiv = document.createElement('div');
+                fullscreenDiv.classList.add('fullscreen');
+
+                // Clonar la imagen para mostrarla en pantalla completa
+                const imgClone = img.cloneNode();
+                fullscreenDiv.appendChild(imgClone);
+
+                // Añadir el contenedor al body
+                document.body.appendChild(fullscreenDiv);
+
+                // Cerrar la imagen ampliada al hacer clic en cualquier lugar
+                fullscreenDiv.addEventListener('click', () => {
+                    fullscreenDiv.remove();
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
