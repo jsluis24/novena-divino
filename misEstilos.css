@@ -117,7 +117,13 @@ h2:hover{
     color:#e2d40e
 }
 
+.cancion p{
+    text-align: center;
+}
 
+.tituloCancion{
+    text-align: center;
+}
 /*
 .contenedor-imagen:hover img {
     transform: scale(1.1);
